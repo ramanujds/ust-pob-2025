@@ -1,7 +1,9 @@
-public class Person {
+package models;
 
-    protected String name;
-    protected String tech;
+public abstract class Person {
+
+    private String name;
+    private String tech;
     private String address;
 
     public Person(){
@@ -37,4 +39,7 @@ public class Person {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public abstract void display();
+
 }
