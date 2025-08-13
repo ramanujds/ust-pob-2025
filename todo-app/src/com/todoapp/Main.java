@@ -13,11 +13,13 @@ public class Main {
 
         todoService.createTodo(2, "Learn Spring", "Spring Boot Rest Apis", "Pending");
 
-        todoService.createTodo(3, "Learn Java", "Explore OOP Concepts", "Completed");
-
-        todoService.createTodo(4, "Learn Spring", "Spring Boot Rest Apis", "Pending");
+        todoService.createTodo(3, "Learn Collections", "Java Collection Framework", "Pending");
 
 
         todoService.printAllTodos();
+
+        todoService.completeTodo(3);
+        todoService.printTodoById(3);
+
     }
 }

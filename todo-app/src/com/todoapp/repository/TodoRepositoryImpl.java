@@ -18,10 +18,17 @@ public class TodoRepositoryImpl implements TodoRepository {
     }
 
     public Task getTask(int id) {
+        for (Task t:todos){
+            if (t.getId()==id){
+                return t;
+            }
+        }
         return null;
     }
 
     public void deleteTask(int id) {
+
+
 
     }
 
@@ -30,6 +37,9 @@ public class TodoRepositoryImpl implements TodoRepository {
     }
 
     public void markAsCompleted(int id) {
-
+        Task task = getTask(id);
+        if (task !=null){
+            task.setStatus("Completed");
+        }
     }
 }

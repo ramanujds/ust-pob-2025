@@ -21,16 +21,14 @@ public class TodoServiceImpl implements TodoService{
             if (todo == null) {
                 return;
             }
-            System.out.println("Id : " + todo.getId());
-            System.out.println("Title : " + todo.getTitle());
-            System.out.println("Status : " + todo.getStatus());
-            System.out.println("Details : " + todo.getDetails());
+            printTodo(todo);
         }
 
     }
 
     public void printTodoById(int id) {
-
+        Task task = repo.getTask(id);
+        printTodo(task);
     }
 
     public void deleteTodo(int id) {
@@ -38,6 +36,15 @@ public class TodoServiceImpl implements TodoService{
     }
 
     public void completeTodo(int id) {
-
+        repo.markAsCompleted(id);
     }
+
+
+    void printTodo(Task todo){
+        System.out.println("Id : " + todo.getId());
+        System.out.println("Title : " + todo.getTitle());
+        System.out.println("Status : " + todo.getStatus());
+        System.out.println("Details : " + todo.getDetails());
+    }
+
 }
