@@ -17,14 +17,14 @@ public class TodoServiceImpl implements TodoService{
     public void printAllTodos() {
 
         Task[] todos = repo.getAllTasks();
-        for (Task t:todos){
-            if(t==null){
+        for (Task todo : todos) {
+            if (todo == null) {
                 return;
             }
-            System.out.println("Id : "+t.getId());
-            System.out.println("Title : "+t.getTitle());
-            System.out.println("Status : "+t.getStatus());
-            System.out.println("Details : "+t.getDetails());
+            System.out.println("Id : " + todo.getId());
+            System.out.println("Title : " + todo.getTitle());
+            System.out.println("Status : " + todo.getStatus());
+            System.out.println("Details : " + todo.getDetails());
         }
 
     }

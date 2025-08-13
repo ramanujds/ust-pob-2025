@@ -5,7 +5,7 @@ import com.todoapp.model.Task;
 public class TodoRepositoryImpl implements TodoRepository {
 
     private Task[] todos = new Task[3];
-    static int current=0;
+    int current=0;
 
 
     public void saveTask(Task task) {
