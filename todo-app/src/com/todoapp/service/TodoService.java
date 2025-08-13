@@ -4,7 +4,7 @@ import com.todoapp.model.Task;
 
 public interface TodoService {
 
-    void createTodo();
+    void createTodo(int id, String title, String details, String status);
 
     void printAllTodos();
 

@@ -8,8 +8,8 @@ public class TodoServiceImpl implements TodoService{
 
     TodoRepository repo = new TodoRepositoryImpl();
 
-    public void createTodo() {
-        Task task = new Task(1,"Learn Java","Java Prograaming and Spring Boot","Pending");
+    public void createTodo(int id, String title, String details, String status) {
+        Task task = new Task(id,title,details,status);
         repo.saveTask(task);
         System.out.println("Task Added");
     }

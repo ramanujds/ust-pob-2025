@@ -4,11 +4,17 @@ import com.todoapp.model.Task;
 
 public class TodoRepositoryImpl implements TodoRepository {
 
-    private Task[] todos = new Task[10];
+    private Task[] todos = new Task[3];
+    static int current=0;
 
 
     public void saveTask(Task task) {
-        todos[0] = task;
+       if (current==todos.length){
+           System.out.println("List Full Can't Add more Task");
+           return;
+       }
+        todos[current] = task;
+        current++;
     }
 
     public Task getTask(int id) {
