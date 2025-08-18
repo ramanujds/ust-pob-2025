@@ -4,22 +4,22 @@ package com.todoapp;
 import com.todoapp.service.TodoService;
 import com.todoapp.service.TodoServiceImpl;
 
+import java.util.Scanner;
+import java.util.SortedMap;
+
 public class Main {
     public static void main(String[] args) {
 
         TodoService todoService = new TodoServiceImpl();
 
-        todoService.createTodo(1, "Learn Java", "Explore OOP Concepts", "Completed");
+        Scanner scanner = new Scanner(System.in);
 
-        todoService.createTodo(2, "Learn Spring", "Spring Boot Rest Apis", "Pending");
+        System.out.println("Input ID, Title, Details and Status");
+        int id = scanner.nextInt();
+        String title = scanner.next() + scanner.nextLine();
+        System.out.println("ID : "+id);
+        System.out.println("Title : "+title);
 
-        todoService.createTodo(3, "Learn Collections", "Java Collection Framework", "Pending");
-
-
-        todoService.printAllTodos();
-
-        todoService.completeTodo(3);
-        todoService.printTodoById(3);
 
     }
 }
