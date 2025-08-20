@@ -1,5 +1,6 @@
 package com.todoapp.repository;
 
+import com.todoapp.exception.InvalidTodoException;
 import com.todoapp.model.Task;
 
 public class TodoRepositoryImpl implements TodoRepository {
@@ -15,6 +16,12 @@ public class TodoRepositoryImpl implements TodoRepository {
     //    status is not "Pending" or "Completed";
 
     public void saveTask(Task task) {
+        if (task.getId() <= 0){
+            throw new InvalidTodoException("Invalid ID : "+task.getId());
+        }
+        if (task.getTitle() == null || task.getTitle().isBlank()){
+            throw new InvalidTodoException("Invalid title : "+task.getTitle());
+        }
        if (current==todos.length){
            System.out.println("List Full Can't Add more Task");
            return;
