@@ -8,6 +8,12 @@ public class TodoRepositoryImpl implements TodoRepository {
     int current=0;
 
 
+    // TODO: Must throw an InvalidTodoException if
+    //    id is not a positive number;
+    //    title is blank or null;
+    //    details is blank or null;
+    //    status is not "Pending" or "Completed";
+
     public void saveTask(Task task) {
        if (current==todos.length){
            System.out.println("List Full Can't Add more Task");
@@ -16,6 +22,8 @@ public class TodoRepositoryImpl implements TodoRepository {
         todos[current] = task;
         current++;
     }
+
+    // TODO: Must throw an TodoNotFoundException if no Task present with that id
 
     public Task getTask(int id) {
         for (Task t:todos){
