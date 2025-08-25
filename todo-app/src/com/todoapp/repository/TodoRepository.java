@@ -2,6 +2,8 @@ package com.todoapp.repository;
 
 import com.todoapp.model.Task;
 
+import java.util.List;
+
 public interface TodoRepository {
 
     void saveTask(Task task);
@@ -10,7 +12,7 @@ public interface TodoRepository {
 
     void deleteTask(int id);
 
-    Task[] getAllTasks();
+    List<Task> getAllTasks();
 
     void markAsCompleted(int id);
 

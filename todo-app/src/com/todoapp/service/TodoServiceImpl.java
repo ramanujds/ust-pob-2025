@@ -16,7 +16,7 @@ public class TodoServiceImpl implements TodoService{
 
     public void printAllTodos() {
 
-        Task[] todos = repo.getAllTasks();
+        var todos = repo.getAllTasks();
         for (Task todo : todos) {
             if (todo == null) {
                 return;

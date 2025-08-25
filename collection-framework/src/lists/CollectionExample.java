@@ -8,21 +8,20 @@ public class CollectionExample {
 
       List<String> items = new ArrayList<>();
 
+
         items.add("Rajiv");
         items.add("Karan");
+        items.add("Harsh");
+        items.add("Suraj");
+        items.add("Amit");
 
-        items.remove("Karan");
-
-        items.add(1,"Harsh");
-
-
-
-
-
+        Collections.sort(items);
 
         for(String item:items){
             System.out.println(item);
         }
+
+
 
 
     }

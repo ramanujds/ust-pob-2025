@@ -1,12 +1,17 @@
 package com.todoapp.repository;
 
 import com.todoapp.exception.InvalidTodoException;
+import com.todoapp.exception.TodoNotFoundException;
 import com.todoapp.model.Task;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class TodoRepositoryImpl implements TodoRepository {
 
-    private Task[] todos = new Task[3];
-    int current=0;
+    private Map<Integer,Task> todos = new HashMap<>();
 
 
     // TODO: Must throw an InvalidTodoException if
@@ -22,33 +27,23 @@ public class TodoRepositoryImpl implements TodoRepository {
         if (task.getTitle() == null || task.getTitle().isBlank()){
             throw new InvalidTodoException("Invalid title : "+task.getTitle());
         }
-       if (current==todos.length){
-           System.out.println("List Full Can't Add more Task");
-           return;
-       }
-        todos[current] = task;
-        current++;
+      todos.put(task.getId(),task);
     }
 
     // TODO: Must throw an TodoNotFoundException if no Task present with that id
 
     public Task getTask(int id) {
-        for (Task t:todos){
-            if (t.getId()==id){
-                return t;
-            }
-        }
-        return null;
+       return todos.get(id);
     }
 
     public void deleteTask(int id) {
 
-
+        todos.remove(id);
 
     }
 
-    public Task[] getAllTasks() {
-        return todos;
+    public List<Task> getAllTasks() {
+        return new ArrayList<>(todos.values());
     }
 
     public void markAsCompleted(int id) {
