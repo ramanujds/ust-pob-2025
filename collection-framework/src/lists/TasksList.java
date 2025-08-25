@@ -3,9 +3,19 @@ package lists;
 import model.Task;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+
+class ComparePriority implements Comparator<Task>{
+    public int compare(Task t1, Task t2) {
+        return t2.getPriority()-t1.getPriority();
+    }
+}
+
+class CompareById implements Comparator<Task>{
+    public int compare(Task t1, Task t2) {
+        return t1.getId()-t2.getId();
+    }
+}
 
 public class TasksList {
 
@@ -24,13 +34,22 @@ public class TasksList {
         Task t5 = new Task(5, "Plan Weekend Trip",
                 LocalDate.parse("2025-06-14"), 2);
 
+//        Task t6 = new Task(5, "Plan Weekend Trip",
+//                LocalDate.parse("2025-06-14"), 2);
+//
+//        Task t7 = new Task(5, "Plan Weekend Trip",
+//                LocalDate.parse("2025-06-14"), 2);
+
+
         taskList.add(t1);
         taskList.add(t2);
         taskList.add(t3);
         taskList.add(t4);
         taskList.add(t5);
 
-        Collections.sort(taskList);
+        Comparator<Task> taskComparator = new CompareById();
+        Collections.sort(taskList, taskComparator);
+
 
         for (Task task : taskList) {
             System.out.println(task);
