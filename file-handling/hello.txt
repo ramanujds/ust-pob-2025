@@ -1,0 +1,3 @@
+Hello world. This is  a simple text file
+We are learning Java File and IO
+Reading text from file
