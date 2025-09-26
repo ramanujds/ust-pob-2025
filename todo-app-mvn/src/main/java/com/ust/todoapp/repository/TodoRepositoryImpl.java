@@ -16,7 +16,7 @@ public class TodoRepositoryImpl implements TodoRepository {
 
     public Task saveTask(Task task) {
 
-        if (task.getId() < 0) {
+        if (task.getId() <= 0) {
             throw new InvalidTodoException("Invalid ID : " + task.getId());
         }
         if (task.getTitle() == null || task.getTitle().isBlank()) {
