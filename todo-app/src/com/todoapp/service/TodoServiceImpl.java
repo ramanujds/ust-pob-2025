@@ -2,11 +2,12 @@ package com.todoapp.service;
 
 import com.todoapp.model.Task;
 import com.todoapp.repository.TodoRepository;
+import com.todoapp.repository.TodoRepositoryDBBasedImpl;
 import com.todoapp.repository.TodoRepositoryImpl;
 
 public class TodoServiceImpl implements TodoService{
 
-    TodoRepository repo = new TodoRepositoryImpl();
+    TodoRepository repo = new TodoRepositoryDBBasedImpl();
 
     public void createTodo(int id, String title, String details, String status) {
         Task task = new Task(id,title,details,status);
