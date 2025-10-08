@@ -2,43 +2,50 @@ package com.ust.greetapp.api;
 
 import com.ust.greetapp.model.Task;
 import com.ust.greetapp.repository.TaskRepository;
+import com.ust.greetapp.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1/tasks")
 public class TaskController {
 
 
-    TaskRepository repo;
+    private final TaskService service;
 
-
-    public TaskController(TaskRepository repo) {
-        this.repo = repo;
+    @Autowired
+    public TaskController(TaskService service) {
+        this.service = service;
     }
 
-    @GetMapping("/task/{title}")
-    public Task getTask(@PathVariable String title){
-        return repo.getTask(title);
+
+    @GetMapping("/title/{title}")
+    public Task getTaskByTitle(@PathVariable String title){
+        return service.getTaskByTitle(title);
     }
 
-    @GetMapping("/task")
+    @GetMapping
     public List<Task> getAllTasks(){
-        return repo.getAllTasks();
+        return service.getAllTasks();
     }
 
-    @PostMapping("/task")
+    @GetMapping("/{id}")
+    public Task getTask(@PathVariable int id){
+        return service.getTaskById(id);
+    }
+
+    @PostMapping
     public Task saveTask(@RequestBody Task task){
-        return repo.saveTask(task);
+        return service.createTask(task);
     }
 
-    @DeleteMapping("/task/{title}")
-    public void deleteTask(@PathVariable String title){
-        repo.deleteTask(title);
+    @DeleteMapping("/{id}")
+    public void deleteTask(@PathVariable int id){
+        service.deleteTaskById(id);
     }
 
 
-    // Create a list of tasks and return all
 
 }
