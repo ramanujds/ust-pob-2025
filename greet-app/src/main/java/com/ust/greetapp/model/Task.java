@@ -16,6 +16,8 @@ public class Task{
     private boolean completed;
     private LocalDate dueDate;
 
+    private int priority; // 1-5
+
     public int getId() {
         return id;
     }

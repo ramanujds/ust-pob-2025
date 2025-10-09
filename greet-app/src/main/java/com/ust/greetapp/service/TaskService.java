@@ -68,4 +68,12 @@ public class TaskService {
 
     }
 
+    public List<Task> findTaskWithPriorityGraterThan(int priority){
+
+    }
+
+    public List<Task> findTasksDueForCurrentMonth(){
+
+    }
+
 }
