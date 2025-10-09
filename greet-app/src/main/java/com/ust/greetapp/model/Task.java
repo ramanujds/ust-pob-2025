@@ -3,6 +3,8 @@ package com.ust.greetapp.model;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 @Entity
 public class Task{
     @Id
@@ -12,6 +14,7 @@ public class Task{
     private String title;
     private String description;
     private boolean completed;
+    private LocalDate dueDate;
 
     public int getId() {
         return id;
@@ -43,5 +46,13 @@ public class Task{
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
     }
 }
