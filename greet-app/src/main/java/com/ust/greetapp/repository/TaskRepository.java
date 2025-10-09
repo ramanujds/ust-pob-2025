@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Task, Integer> {
 
-    Task findByTitle(String title);
+    List<Task> findByTitle(String title);
 
     List<Task> findByCompleted(boolean completed);
 
