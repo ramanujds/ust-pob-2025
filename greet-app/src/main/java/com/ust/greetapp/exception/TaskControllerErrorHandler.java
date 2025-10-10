@@ -27,4 +27,7 @@ public class TaskControllerErrorHandler {
         );
     }
 
+    // DuplicateRecordException
+    // Status Code : 400
+
 }

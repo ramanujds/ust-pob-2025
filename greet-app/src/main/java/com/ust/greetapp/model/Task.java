@@ -16,6 +16,7 @@ public class Task{
     private boolean completed;
     private LocalDate dueDate;
 
+
     private int priority; // 1-5
 
     public int getPriority() {
@@ -65,4 +66,7 @@ public class Task{
     public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
+
+
+
 }
