@@ -18,6 +18,14 @@ public class Task{
 
     private int priority; // 1-5
 
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
     public int getId() {
         return id;
     }

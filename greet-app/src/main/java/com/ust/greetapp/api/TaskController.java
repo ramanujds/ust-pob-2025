@@ -67,4 +67,11 @@ public class TaskController {
     }
 
 
+    @GetMapping("/due/current")
+    public List<Task> getCurrentMonthsDueTasks(){
+        return service.findTasksDueForCurrentMonth();
+    }
+
+
+
 }

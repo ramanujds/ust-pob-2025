@@ -16,4 +16,7 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
     @Query("from Task where dueDate<now() and completed=false ")
     List<Task> findOverdueTasks();
 
+    @Query("from Task where month(dueDate)=:month and completed=:status")
+    List<Task> findWithMonthAndStaus(int month, boolean status);
+
 }

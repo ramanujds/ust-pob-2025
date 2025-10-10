@@ -1,11 +1,13 @@
 package com.ust.greetapp.service;
 
+import com.ust.greetapp.exception.RecordNotFoundException;
 import com.ust.greetapp.model.Task;
 import com.ust.greetapp.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -24,7 +26,7 @@ public class TaskService {
     }
 
     public Task getTaskById(int id){
-        return taskRepo.findById(id).get();
+        return taskRepo.findById(id).orElseThrow(() -> new RecordNotFoundException("Task with ID : "+id+" Not Found"));
     }
 
     public List<Task> getTaskByTitle(String title) {
@@ -68,12 +70,13 @@ public class TaskService {
 
     }
 
-    public List<Task> findTaskWithPriorityGraterThan(int priority){
-
-    }
+//    public List<Task> findTaskWithPriorityGraterThan(int priority){
+//
+//    }
 
     public List<Task> findTasksDueForCurrentMonth(){
-
+        int currentMonth = LocalDate.now().getMonthValue();
+        return taskRepo.findWithMonthAndStaus(currentMonth,false);
     }
 
 }
