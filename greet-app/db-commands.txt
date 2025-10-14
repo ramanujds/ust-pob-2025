@@ -1,0 +1,8 @@
+db.todos.insertOne({
+  title: "java",
+  description: "Learn Java",
+  completed: true,
+  dueDate: ISODate("2025-10-10")
+});
+
+db.todos.find({"completed":false})
