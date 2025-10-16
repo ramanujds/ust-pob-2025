@@ -1,0 +1,26 @@
+For notes refer to :
+https://github.com/ramanujds/spring-boot-rbi
+
+
+@Component
+@Service
+@Repository
+@Controller
+@RestController
+@Configuration
+@Bean
+@Autowired
+@Value
+@RequestMapping
+@GetMapping
+@PostMapping
+@PutMapping
+@DeleteMapping
+@PatchMapping
+@RequestParam
+@PathVariable
+@RequestBody
+@ResponseBody
+@ResponseStatus
+
+
