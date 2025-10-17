@@ -16,6 +16,8 @@ public class Task{
     private boolean completed;
     private LocalDate dueDate;
 
+    public Task() {
+    }
 
     private int priority; // 1-5
 
@@ -67,6 +69,12 @@ public class Task{
         this.dueDate = dueDate;
     }
 
-
-
+    public Task(int id, String title, String description, boolean completed, LocalDate dueDate, int priority) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.completed = completed;
+        this.dueDate = dueDate;
+        this.priority = priority;
+    }
 }
