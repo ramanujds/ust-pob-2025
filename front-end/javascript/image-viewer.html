@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fafafa;
+            font-family: Arial, sans-serif;
+        }
+
+        .slider {
+            text-align: center;
+            border: 2px solid #ccc;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .slider img {
+            width: 400;
+            height: 400;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .buttons {
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 8px 16px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider">
+        <img id="slider-image"
+            src="https://images.unsplash.com/photo-1494791368093-85217fbbf8de?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fG5hdHVyZXxlbnwwfDJ8MHx8fDA%3D&auto=format&fit=crop&q=60&w=500"
+            alt="Slider Image" />
+
+        <div class="buttons">
+            <button onclick="prevImage()">Prev</button>
+            <button onclick="nextImage()">Next</button>
+        </div>
+    </div>
+    <script>
+
+        let images = ["https://plus.unsplash.com/premium_photo-1680040211009-169b40ee81bb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bmF0dXJlfGVufDB8MnwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500",
+                    "https://images.unsplash.com/photo-1471180625745-944903837c22?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmF0dXJlfGVufDB8MnwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500",
+                    "https://images.unsplash.com/photo-1494548162494-384bba4ab999?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bmF0dXJlfGVufDB8MnwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500",
+                    "https://images.unsplash.com/photo-1494791368093-85217fbbf8de?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fG5hdHVyZXxlbnwwfDJ8MHx8fDA%3D&auto=format&fit=crop&q=60&w=500"
+        ];
+let currentIndex = 0;
+        function showImage(index) {
+            const img = document.getElementById("slider-image");
+            img.src = images[index];
+        }
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        }
+
+
+    </script>
+
+</body>
+
+</html>
