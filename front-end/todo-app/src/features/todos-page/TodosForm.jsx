@@ -1,24 +1,49 @@
 import React from 'react'
 
-const TodosForm = () => {
+const TodosForm = ({ addTodo }) => {
+
+  const [todoForm, setTodoForm] = React.useState({
+    title: "",
+    completed: false,
+  });
+
+  function handleFormSubmit(event) {
+    addTodo(todoForm);
+    event.preventDefault();
+
+    console.log("Form submitted:", todoForm);
+  }
+
+  function handleTitleChange(event) {
+    setTodoForm({ ...todoForm, title: event.target.value });
+  }
+
+  function handleCompletedChange(event) {
+    setTodoForm({ ...todoForm, completed: event.target.checked });
+  }
+
+
+
   return (
-    <form>
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="htmlForm-label">Email address</label>
-        <input type="email" className="htmlForm-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-          <div id="emailHelp" className="htmlForm-text">We'll never share your email with anyone else.</div>
-      </div>
-      <div className="mb-3">
-        <label htmlFor="exampleInputPassword1" className="htmlForm-label">Password</label>
-        <input type="password" className="htmlForm-control" id="exampleInputPassword1"/>
-      </div>
-      <div className="mb-3 htmlForm-check">
-        <input type="checkbox" className="htmlForm-check-input" id="exampleCheck1"/>
-          <label className="htmlForm-check-label" htmlFor="exampleCheck1">Check me out</label>
-      </div>
-      <button type="submit" className="btn btn-primary">Submit</button>
-    </form>
+    <>
+      <form onSubmit={handleFormSubmit}>
+        <div className="mb-3">
+          <label htmlFor="title" className="form-label">Todo Title</label>
+          <input type="text" className="form-control" id="title" placeholder="Enter todo title" onChange={handleTitleChange} />
+        </div>
+        <div className="form-check mb-3">
+          <input className="form-check-input" type="checkbox" id="completed" onChange={handleCompletedChange} />
+          <label className="form-check-label" htmlFor="completed">
+            Completed
+          </label>
+        </div>
+        <button type="submit" className="btn btn-primary">Submit</button>
+      </form>
+
+
+    </>
   )
+
 }
 
 export default TodosForm
