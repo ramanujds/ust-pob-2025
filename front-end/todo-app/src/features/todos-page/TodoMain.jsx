@@ -7,7 +7,7 @@ const TodoMain = () => {
      const sampleTodos = [
         { id: 1, title: "Learn React", completed: false },
         { id: 2, title: "Build a Todo App", completed: false },
-        { id: 3, title: "Profit", completed: false },
+        { id: 3, title: "Learn Java", completed: true },
     ];
 
     const [todos, setTodos] = React.useState(sampleTodos);
@@ -27,7 +27,7 @@ const TodoMain = () => {
   return (
     <div className="row">
     <div className='col-md-6 col-12'>
-        <TodoList todos={todos} />
+        <TodoList todos={todos} deleteTodo={deleteTodo} />
     </div>
     <div className='col-md-6 col-12'>
         <TodosForm addTodo={addTodo} />

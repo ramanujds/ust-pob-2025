@@ -3,24 +3,42 @@ import React from 'react'
 const TodosForm = ({ addTodo }) => {
 
   const [todoForm, setTodoForm] = React.useState({
+    id:0,
     title: "",
     completed: false,
   });
 
-  function handleFormSubmit(event) {
-    addTodo(todoForm);
-    event.preventDefault();
+  const [errors, setErrors] = React.useState({});
 
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    const id = Math.floor(Math.random() * 10000); 
+    todoForm.id = id;
+    if (!validateForm()) {
+      return;
+    }
+    addTodo(todoForm);
     console.log("Form submitted:", todoForm);
   }
 
-  function handleTitleChange(event) {
-    setTodoForm({ ...todoForm, title: event.target.value });
+  function handleInputChange(event) {
+    const { name, value, checked } = event.target;
+    if (name === "completed") {
+      setTodoForm({ ...todoForm, completed: checked });
+      return;
+    }
+    setTodoForm({ ...todoForm, [name]: value });
   }
 
-  function handleCompletedChange(event) {
-    setTodoForm({ ...todoForm, completed: event.target.checked });
+  function validateForm() {
+    if (todoForm.title.trim() === "") {
+      setErrors({ title: "Title is required" });
+      return false;
+    }
+    setErrors({});
+    return true;
   }
+
 
 
 
@@ -29,10 +47,11 @@ const TodosForm = ({ addTodo }) => {
       <form onSubmit={handleFormSubmit}>
         <div className="mb-3">
           <label htmlFor="title" className="form-label">Todo Title</label>
-          <input type="text" className="form-control" id="title" placeholder="Enter todo title" onChange={handleTitleChange} />
+          <input type="text" name="title" className="form-control" id="title" placeholder="Enter todo title" onChange={handleInputChange} />
+          {errors.title && <small className='text-danger'>* Title is required</small>} 
         </div>
         <div className="form-check mb-3">
-          <input className="form-check-input" type="checkbox" id="completed" onChange={handleCompletedChange} />
+          <input className="form-check-input" name="completed" type="checkbox" id="completed" onChange={handleInputChange} />
           <label className="form-check-label" htmlFor="completed">
             Completed
           </label>

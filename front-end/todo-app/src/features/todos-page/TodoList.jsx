@@ -3,7 +3,7 @@ import TodosForm from "./TodosForm";
 import TodoCard from "./TodoCard";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const TodoList = ({todos}) => {
+const TodoList = ({todos,deleteTodo}) => {
 
    
 
@@ -13,7 +13,7 @@ const TodoList = ({todos}) => {
     return (
         <div className="row">
         {todos.map((todo) => (
-            <TodoCard todo={todo} />
+            <TodoCard key={todo.id} todo={todo} deleteTodo={deleteTodo} />
         ))}
 
         </div>  
