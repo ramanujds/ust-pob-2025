@@ -3,7 +3,7 @@ import TodosForm from "./TodosForm";
 import TodoCard from "./TodoCard";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const TodoList = ({todos,deleteTodo}) => {
+const TodoList = ({todos,deleteTodo,markAsCompleted}) => {
 
    
 
@@ -13,7 +13,7 @@ const TodoList = ({todos,deleteTodo}) => {
     return (
         <div className="row">
         {todos.map((todo) => (
-            <TodoCard key={todo.id} todo={todo} deleteTodo={deleteTodo} />
+            <TodoCard key={todo.id} todo={todo} deleteTodo={deleteTodo} markAsCompleted={markAsCompleted} />
         ))}
 
         </div>  

@@ -1,7 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const TodoCard = ({todo, deleteTodo}) => {
+const TodoCard = ({todo, deleteTodo, markAsCompleted}) => {
 
 
 
@@ -12,6 +12,7 @@ const TodoCard = ({todo, deleteTodo}) => {
         <h5 className="card-title">{todo.title}</h5>
         <p className="card-text">Status: {todo.completed ? 'Completed' : 'Pending'}</p>
         <button className="btn btn-dark" onClick={() => deleteTodo(todo.id)}>Delete</button>
+       <button className="btn btn-success" disabled={todo.completed} onClick={() => markAsCompleted(todo.id)}>{todo.completed?'Done':'Mark Completed'}</button>
       </div>
     </div>
   )
