@@ -1,6 +1,10 @@
 import React from 'react'
+import { createTodo } from './todoApiService';
+import { useNavigate } from 'react-router-dom';
 
-const TodosForm = ({ addTodo }) => {
+const TodosForm = () => {
+
+  const naigate = useNavigate();
 
   const [todoForm, setTodoForm] = React.useState({
     id:0,
@@ -9,6 +13,12 @@ const TodosForm = ({ addTodo }) => {
   });
 
   const [errors, setErrors] = React.useState({});
+
+  function addTodo(todo) {
+          createTodo(todo).then((newTodo) => {
+              naigate('/');
+          });
+      }
 
   function handleFormSubmit(event) {
     event.preventDefault();

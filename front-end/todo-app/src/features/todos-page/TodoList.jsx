@@ -1,11 +1,32 @@
-import React from "react";
-import TodosForm from "./TodosForm";
+import React, { useEffect, useState } from "react";
 import TodoCard from "./TodoCard";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { deleteTodoApi, fetchTodos, markTodoAsCompletedApi } from "./todoApiService";
 
-const TodoList = ({todos,deleteTodo,markAsCompleted}) => {
+const TodoList = () => {
 
    
+    const [todos, setTodos] = useState([]);
+    
+        useEffect(() => fetchTodoFromApi() , []);
+    
+    
+        const fetchTodoFromApi = () => {
+            fetchTodos().then(data => setTodos(data));
+        }
+    
+         function deleteTodo(id) {
+                deleteTodoApi(id).then(() => {
+                    fetchTodoFromApi();
+                });
+            }
+        
+            function markAsCompleted(id) {
+                markTodoAsCompletedApi(id).then(() => {
+                    fetchTodoFromApi();
+                });
+            }
+        
 
    
 
